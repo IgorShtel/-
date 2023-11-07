@@ -1,0 +1,26 @@
+name: Build and Test
+
+on:
+  push:
+    branches:
+      - main  # Змініть це на назву гілки, яку ви хочете використовувати
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Виберіть операційну систему, яка підходить для вашого проекту
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # Завантажує ваш код з репозиторію
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2  # Встановлює потрібну версію Node.js
+
+    - name: Install dependencies
+      run: npm install  # Встановлює залежності вашого проекту
+
+    - name: Build app
+      run: npm build  # Збирає ваш додаток
+
+    - name: Run tests
+      run: npm test  # Запускає ваші тести
